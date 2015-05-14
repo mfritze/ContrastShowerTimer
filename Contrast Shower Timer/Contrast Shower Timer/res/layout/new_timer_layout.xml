@@ -54,15 +54,19 @@
 	    android:layout_alignLeft="@+id/buttonSetCycleDuration"
 	    android:layout_alignParentRight="true"
 	    android:layout_below="@+id/buttonSetCycleDuration"
-	    android:text="@string/start_cycle" />
+	    android:textOn="@string/start_cycle_cold"
+	    android:textOff="@string/start_cycle_hot"
+	    />
 
 	<ToggleButton
-	    android:id="@+id/toggleButton1"
+	    android:id="@+id/toggleButtonEndCycle"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_alignLeft="@+id/toggleButtonStartCycle"
 	    android:layout_alignParentRight="true"
 	    android:layout_below="@+id/toggleButtonStartCycle"
-	    android:text="@string/end_cycle" />
+	    android:textOn="@string/end_cycle_cold" 
+	    android:textOff="@string/end_cycle_hot"
+	    />
 
 </RelativeLayout>

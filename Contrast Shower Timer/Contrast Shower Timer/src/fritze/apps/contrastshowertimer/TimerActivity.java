@@ -1,5 +1,6 @@
 package fritze.apps.contrastshowertimer;
 
+import fritze.apps.contrastshowertimer.Managers.GlobalFragmentManager;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
@@ -24,6 +25,8 @@ public class TimerActivity extends Activity{
 		super.onStart();
 		manager.displayNewTimer();
 	}
+	
+	
 
 
 

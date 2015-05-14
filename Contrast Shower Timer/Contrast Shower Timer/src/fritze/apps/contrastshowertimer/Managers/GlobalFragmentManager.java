@@ -1,6 +1,8 @@
-package fritze.apps.contrastshowertimer;
+package fritze.apps.contrastshowertimer.Managers;
 
 import android.app.FragmentManager;
+import fritze.apps.contrastshowertimer.R;
+import fritze.apps.contrastshowertimer.TimerActivity;
 import fritze.apps.contrastshowertimer.Fragments.NewTimerFragment;
 import fritze.apps.contrastshowertimer.Fragments.TimerFragment;
 
