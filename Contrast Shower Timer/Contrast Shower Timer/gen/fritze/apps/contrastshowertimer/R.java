@@ -34,18 +34,23 @@ public final class R {
     }
     public static final class drawable {
         public static final int circle_button=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
+        public static final int cold_toggle=0x7f020001;
+        public static final int hot_cold_toggle=0x7f020002;
+        public static final int hot_toggle=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int toggle_cold=0x7f020005;
+        public static final int toggle_hot=0x7f020006;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b0015;
+        public static final int action_settings=0x7f0b0017;
         public static final int buttonNewTimer=0x7f0b0000;
         public static final int buttonRepeatTimer=0x7f0b0001;
         public static final int buttonStartTimer=0x7f0b0002;
-        public static final int centerHorizontalLine=0x7f0b000f;
-        public static final int chronometerTimer=0x7f0b0013;
+        public static final int centerHorizontalLine=0x7f0b0012;
+        public static final int chronometerTimer=0x7f0b0015;
         public static final int cyclesBar=0x7f0b0004;
         public static final int durationBar=0x7f0b0007;
-        public static final int mainFragmentHolder=0x7f0b0011;
+        public static final int mainFragmentHolder=0x7f0b0013;
         public static final int numberPickerCycles=0x7f0b0005;
         public static final int numberPickerMinutes=0x7f0b0008;
         public static final int numberPickerSeconds=0x7f0b000b;
@@ -53,12 +58,14 @@ public final class R {
         public static final int startBar=0x7f0b000d;
         public static final int textViewCycleDuration=0x7f0b0006;
         public static final int textViewCyclesCount=0x7f0b0003;
+        public static final int textViewEndTemp=0x7f0b0010;
         public static final int textViewMin=0x7f0b000a;
         public static final int textViewSec=0x7f0b000c;
-        public static final int textViewTimerType=0x7f0b0014;
-        public static final int timer_layout=0x7f0b0012;
-        public static final int toggleButtonEndCycle=0x7f0b0010;
-        public static final int toggleButtonStartCycle=0x7f0b000e;
+        public static final int textViewStartTemp=0x7f0b000e;
+        public static final int textViewTimerType=0x7f0b0016;
+        public static final int timer_layout=0x7f0b0014;
+        public static final int toggleButtonEndCycle=0x7f0b0011;
+        public static final int toggleButtonStartCycle=0x7f0b000f;
     }
     public static final class integer {
         public static final int card_flip_time_full=0x7f070000;
@@ -77,20 +84,18 @@ public final class R {
         public static final int action_settings=0x7f080002;
         public static final int app_name=0x7f080000;
         public static final int cold=0x7f080003;
-        public static final int end_cycle_cold=0x7f08000b;
-        public static final int end_cycle_hot=0x7f08000a;
+        public static final int end_cycle=0x7f08000a;
         public static final int get_ready=0x7f080005;
         public static final int hello_world=0x7f080001;
         public static final int hot=0x7f080004;
         public static final int how_long=0x7f080007;
         public static final int how_many_cycles=0x7f080006;
-        public static final int min=0x7f08000f;
-        public static final int new_timer=0x7f08000d;
-        public static final int repeat=0x7f08000c;
-        public static final int sec=0x7f080010;
+        public static final int min=0x7f08000d;
+        public static final int new_timer=0x7f08000c;
+        public static final int repeat=0x7f08000b;
+        public static final int sec=0x7f08000e;
         public static final int start=0x7f080008;
-        public static final int start_cycle_cold=0x7f08000e;
-        public static final int start_cycle_hot=0x7f080009;
+        public static final int start_cycle=0x7f080009;
     }
     public static final class style {
         /** 

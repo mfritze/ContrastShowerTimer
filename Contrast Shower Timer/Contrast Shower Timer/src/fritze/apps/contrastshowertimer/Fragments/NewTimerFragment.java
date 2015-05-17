@@ -9,7 +9,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
-import android.widget.NumberPicker.OnValueChangeListener;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import fritze.apps.contrastshowertimer.R;
@@ -22,7 +21,8 @@ public class NewTimerFragment extends Fragment{
 	private Button startButton;
 	private NumberPicker cyclesPicker, minutesPicker, 
 			secondsPicker, secondsOrderPicker;
-	private TextView cyclesText, durationText;
+	private TextView cyclesText, durationText,
+					 startText, endText;
 	private ToggleButton startToggle, endToggle;
 	private Timer timer;
 
@@ -42,27 +42,22 @@ public class NewTimerFragment extends Fragment{
 		cyclesPicker.setMinValue(0);
 		cyclesPicker.setMaxValue(20);
 		cyclesPicker.setWrapSelectorWheel(true);
-		cyclesPicker.clearFocus();
 		
 		
 		minutesPicker = (NumberPicker) view.findViewById(R.id.numberPickerMinutes);
 		minutesPicker.setMinValue(0);
 		minutesPicker.setMaxValue(59);
 		minutesPicker.setWrapSelectorWheel(true);
-		minutesPicker.clearFocus();
 		
 		secondsPicker = (NumberPicker) view.findViewById(R.id.numberPickerSeconds);
 		secondsPicker.setMinValue(0);
 		secondsPicker.setMaxValue(9);
 		secondsPicker.setWrapSelectorWheel(true);
-		secondsPicker.clearFocus();
 		
 		secondsOrderPicker = (NumberPicker) view.findViewById(R.id.numberPickerSecondsOrder);
 		secondsOrderPicker.setMinValue(0);
 		secondsOrderPicker.setMaxValue(5);
 		secondsOrderPicker.setWrapSelectorWheel(true);
-		secondsOrderPicker.clearFocus();
-		
 		
 		startButton = (Button) view.findViewById(R.id.buttonStartTimer);
 		startButton.setOnClickListener(startListener);
@@ -74,11 +69,14 @@ public class NewTimerFragment extends Fragment{
 		durationText = (TextView) view.findViewById(R.id.textViewCycleDuration);
 		durationText.setTypeface(TypefaceManager.getTfBold(getActivity()));
 		
+		endText = (TextView) view.findViewById(R.id.textViewStartTemp);
+		endText.setTypeface(TypefaceManager.getTfBold(getActivity()));
+		
+		startText = (TextView) view.findViewById(R.id.textViewEndTemp);
+		startText.setTypeface(TypefaceManager.getTfBold(getActivity()));
+		
 		startToggle = (ToggleButton) view.findViewById(R.id.toggleButtonStartCycle);
-		startToggle.setTypeface(TypefaceManager.getTfReg(getActivity()));
-
 		endToggle = (ToggleButton) view.findViewById(R.id.toggleButtonEndCycle);
-		endToggle.setTypeface(TypefaceManager.getTfReg(getActivity()));
 
 	}
 	
@@ -100,12 +98,6 @@ public class NewTimerFragment extends Fragment{
 		}
 	};
 	
-	private OnValueChangeListener cyclesListener;
-	
-	private OnValueChangeListener minutesListener;
-	
-	private OnValueChangeListener secondsListener;
-
 
 
 }

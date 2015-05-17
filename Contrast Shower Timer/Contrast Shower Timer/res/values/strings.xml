@@ -10,12 +10,8 @@
     <string name="how_many_cycles">How Many Cycles?</string>
     <string name="how_long">How Long is Each Cycle?</string>
     <string name="start">START</string>
-    <string name="start_cycle_hot">Start Hot</string>
-    <string name="end_cycle_hot">End Hot</string>
+    <string name="start_cycle">Start Cycle</string><string name="end_cycle">End Cycle</string><string name="repeat">Repeat Timer</string><string name="new_timer">New Timer</string>
     
-    
-    <string name="end_cycle_cold">End Cold</string><string name="repeat">Repeat Timer</string><string name="new_timer">New Timer</string>
-    <string name="start_cycle_cold">Start Cold</string>
     <string name="min">min</string>
     <string name="sec">sec</string>
 
