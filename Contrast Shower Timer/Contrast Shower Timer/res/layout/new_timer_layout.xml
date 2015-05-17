@@ -1,72 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:padding="10dp"
+     >
     
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/buttonStartTimer"
+        >
+        
+        <RelativeLayout 
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	>
+        	
+			<TextView
+			    android:id="@+id/textViewCyclesCount"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_alignParentLeft="true"
+			    android:layout_alignParentTop="true"
+			    android:text="@string/how_many_cycles"
+			     />
+			
+			<View 
+			    android:id="@+id/cyclesBar"
+			    android:layout_height="2dp"
+			    android:layout_width="match_parent"
+			    android:background="@color/grey"
+			    android:layout_below="@+id/textViewCyclesCount"
+			    android:layout_marginBottom="2dp"
+			    
+			    />
+			
+			<NumberPicker
+			    android:id="@+id/numberPickerCycles"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignLeft="@+id/textViewCyclesCount"
+			    android:layout_below="@+id/cyclesBar"
+			    android:layout_marginLeft="10dp"
+			     />
+		
+		
+			<TextView
+			    android:id="@+id/textViewCycleDuration"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignParentLeft="true"
+			    android:layout_below="@+id/numberPickerCycles"
+			    android:text="@string/how_long"
+				 />
+			
+			<View 
+			    android:id="@+id/durationBar"
+			    android:layout_height="2dp"
+			    android:layout_width="match_parent"
+			    android:background="@color/grey"
+			    android:layout_below="@+id/textViewCycleDuration"
+			    android:layout_marginBottom="2dp"
+			    />
+		
+			<NumberPicker
+			    android:id="@+id/numberPickerMinutes"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignLeft="@+id/numberPickerCycles"
+			    android:layout_below="@+id/durationBar" />
+		
+			<NumberPicker
+			    android:id="@+id/numberPickerSecondsOrder"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignTop="@+id/numberPickerMinutes"
+			    android:layout_toRightOf="@+id/textViewMin" >
+			</NumberPicker>
+		
+			<TextView
+			    android:id="@+id/textViewMin"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignBottom="@+id/numberPickerMinutes"
+			    android:layout_alignTop="@+id/numberPickerMinutes"
+			    android:layout_toRightOf="@+id/numberPickerMinutes"
+			    android:gravity="center_vertical"
+			    android:text="@string/min" />
+		
+			<NumberPicker
+			    android:id="@+id/numberPickerSeconds"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignTop="@+id/numberPickerSecondsOrder"
+			    android:layout_toRightOf="@+id/numberPickerSecondsOrder" />
+			
+			<TextView
+			    android:id="@+id/textViewSec"
+			    android:layout_height="wrap_content"
+			    android:layout_width="wrap_content"
+			    android:text="@string/sec"
+			    android:layout_alignTop="@+id/numberPickerSeconds"
+			    android:layout_alignBottom="@+id/numberPickerSeconds"
+			    android:gravity="center_vertical"
+			    android:layout_toRightOf="@+id/numberPickerSeconds"
+			     />
+			
+		
+			<View 
+			    android:id="@+id/startBar"
+			    android:layout_height="2dp"
+			    android:layout_width="match_parent"
+			    android:background="@color/grey"
+			    android:layout_below="@+id/numberPickerMinutes"
+			    android:layout_marginBottom="2dp"
+			    />
+				
+			<ToggleButton
+			    android:id="@+id/toggleButtonStartCycle"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignParentLeft="true"
+			    android:layout_alignRight="@+id/centerHorizontalLine"
+			    android:layout_below="@+id/startBar"
+			    android:textOff="@string/start_cycle_hot"
+			    android:textOn="@string/start_cycle_cold" />
+		
+			<ToggleButton
+			    android:id="@+id/toggleButtonEndCycle"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignLeft="@+id/centerHorizontalLine"
+			    android:layout_alignParentRight="true"
+			    android:layout_alignTop="@+id/toggleButtonStartCycle"
+			    android:layout_toRightOf="@+id/numberPickerSeconds"
+			    android:textOff="@string/end_cycle_hot"
+			    android:textOn="@string/end_cycle_cold" />
+			
+			<View
+			    android:id="@+id/centerHorizontalLine"
+			    android:layout_centerHorizontal="true"
+			    android:layout_height="0dp"
+			    android:layout_width="0dp"
+			    />
+            
+        </RelativeLayout>
+        
+        
+    </ScrollView>
 
+	
+	
 	<Button
 	    android:id="@+id/buttonStartTimer"
 	    android:layout_width="100dp"
 	    android:layout_height="100dp"
 	    android:layout_alignParentBottom="true"
 	    android:layout_centerHorizontal="true"
+	    android:textColor="@color/white"
+	    android:background="@drawable/circle_button"
 	    android:text="@string/start" />
 
-	<TextView
-	    android:id="@+id/textViewCyclesCount"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentLeft="true"
-	    android:layout_alignParentTop="true"
-	    android:textAppearance="?android:attr/textAppearanceLarge" />
 
-	<TextView
-	    android:id="@+id/textViewCycleDuration"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentLeft="true"
-	    android:layout_below="@+id/textViewCyclesCount"
-	    android:layout_marginTop="22dp"
-		 />
-
-	<Button
-	    android:id="@+id/buttonSetCyclesCount"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentRight="true"
-	    android:layout_alignParentTop="true"
-	    android:layout_toRightOf="@+id/textViewCycleDuration"
-	    android:text="@string/how_many_cycles" />
-
-	<Button
-	    android:id="@+id/buttonSetCycleDuration"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentRight="true"
-	    android:layout_alignTop="@+id/textViewCycleDuration"
-	    android:layout_toRightOf="@+id/textViewCycleDuration"
-	    android:text="@string/how_long" />
-
-	<ToggleButton
-	    android:id="@+id/toggleButtonStartCycle"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignLeft="@+id/buttonSetCycleDuration"
-	    android:layout_alignParentRight="true"
-	    android:layout_below="@+id/buttonSetCycleDuration"
-	    android:textOn="@string/start_cycle_cold"
-	    android:textOff="@string/start_cycle_hot"
-	    />
-
-	<ToggleButton
-	    android:id="@+id/toggleButtonEndCycle"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignLeft="@+id/toggleButtonStartCycle"
-	    android:layout_alignParentRight="true"
-	    android:layout_below="@+id/toggleButtonStartCycle"
-	    android:textOn="@string/end_cycle_cold" 
-	    android:textOff="@string/end_cycle_hot"
-	    />
 
 </RelativeLayout>
