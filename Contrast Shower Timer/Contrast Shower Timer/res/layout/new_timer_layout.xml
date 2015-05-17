@@ -177,7 +177,7 @@
 	    android:layout_alignParentBottom="true"
 	    android:layout_centerHorizontal="true"
 	    android:textColor="@color/white"
-	    android:background="@drawable/circle_button"
+	    android:background="@drawable/green_button"
 	    android:text="@string/start" />
 
 

@@ -2,13 +2,16 @@ package fritze.apps.contrastshowertimer.Managers;
 
 import android.app.FragmentManager;
 import fritze.apps.contrastshowertimer.R;
+import fritze.apps.contrastshowertimer.ShowerTimer;
 import fritze.apps.contrastshowertimer.TimerActivity;
+import fritze.apps.contrastshowertimer.Fragments.DoneFragment;
 import fritze.apps.contrastshowertimer.Fragments.NewTimerFragment;
 import fritze.apps.contrastshowertimer.Fragments.TimerFragment;
 
 public class GlobalFragmentManager {
 	private static NewTimerFragment newTimerFragment;
 	private static TimerFragment timerFragment;
+	private static DoneFragment doneFragment;
 	private static FragmentManager manager;
 	private TimerActivity context;
 	private static int containerId;
@@ -17,6 +20,8 @@ public class GlobalFragmentManager {
 	public GlobalFragmentManager(TimerActivity timerActivity){
 		newTimerFragment = new NewTimerFragment();
 		timerFragment = new TimerFragment();
+		doneFragment = new DoneFragment();
+		
 		context = timerActivity;
 		manager = context.getFragmentManager();
 		containerId = R.id.mainFragmentHolder;
@@ -24,11 +29,12 @@ public class GlobalFragmentManager {
 	}
 
 	
-	public static void animateNewTimer(){
+	public static void animateNewTimer(ShowerTimer timer){
 		if(isShowingTimer){
 			manager.popBackStack();
 			return;
 		}
+		timerFragment.setTimer(timer);
 		manager.beginTransaction()
 		.setCustomAnimations(R.animator.flip_right_in, R.animator.flip_right_out,
                 			 R.animator.flip_left_in, R.animator.flip_left_out)
@@ -40,6 +46,12 @@ public class GlobalFragmentManager {
 		manager.beginTransaction()
 		.replace(containerId, newTimerFragment)
 		.addToBackStack(null)
+		.commit();
+	}
+	
+	public static void displayDone(){
+		manager.beginTransaction()
+		.replace(containerId, doneFragment)
 		.commit();
 	}
 	

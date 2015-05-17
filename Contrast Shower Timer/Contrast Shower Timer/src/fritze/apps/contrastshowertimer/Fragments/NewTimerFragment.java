@@ -1,5 +1,6 @@
 package fritze.apps.contrastshowertimer.Fragments;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,10 +13,11 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import fritze.apps.contrastshowertimer.R;
-import fritze.apps.contrastshowertimer.Timer;
+import fritze.apps.contrastshowertimer.ShowerTimer;
 import fritze.apps.contrastshowertimer.Managers.GlobalFragmentManager;
 import fritze.apps.contrastshowertimer.Managers.TypefaceManager;
 
+@SuppressLint("InflateParams")
 public class NewTimerFragment extends Fragment{
 	private View view;
 	private Button startButton;
@@ -24,8 +26,9 @@ public class NewTimerFragment extends Fragment{
 	private TextView cyclesText, durationText,
 					 startText, endText;
 	private ToggleButton startToggle, endToggle;
-	private Timer timer;
-
+	private ShowerTimer timer;
+	private int duration, cycles;
+	private boolean isHotStart, isHotEnd;
 	
 	@Override
 	@Nullable
@@ -42,7 +45,6 @@ public class NewTimerFragment extends Fragment{
 		cyclesPicker.setMinValue(0);
 		cyclesPicker.setMaxValue(20);
 		cyclesPicker.setWrapSelectorWheel(true);
-		
 		
 		minutesPicker = (NumberPicker) view.findViewById(R.id.numberPickerMinutes);
 		minutesPicker.setMinValue(0);
@@ -89,11 +91,15 @@ public class NewTimerFragment extends Fragment{
 		
 		@Override
 		public void onClick(View v) {
-			boolean startCold = startToggle.isChecked();
-			boolean endCold = endToggle.isChecked();
+			isHotStart = !startToggle.isChecked();
+			isHotEnd = !endToggle.isChecked();
+			cycles = cyclesPicker.getValue();
+			duration = minutesPicker.getValue()*60 +
+						secondsOrderPicker.getValue()*10 + 
+						secondsPicker.getValue();
 			
-			Timer timer = new Timer(0, true, true);
-			GlobalFragmentManager.animateNewTimer();
+			timer = new ShowerTimer(cycles, duration, isHotStart, isHotEnd);
+			GlobalFragmentManager.animateNewTimer(timer);
 			
 		}
 	};
