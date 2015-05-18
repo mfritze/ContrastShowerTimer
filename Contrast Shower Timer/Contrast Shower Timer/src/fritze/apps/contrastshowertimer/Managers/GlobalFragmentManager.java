@@ -32,8 +32,10 @@ public class GlobalFragmentManager {
 	public static void animateNewTimer(ShowerTimer timer){
 		if(isShowingTimer){
 			manager.popBackStack();
+			isShowingTimer = false;
 			return;
 		}
+		isShowingTimer = true;
 		timerFragment.setTimer(timer);
 		manager.beginTransaction()
 		.setCustomAnimations(R.animator.flip_right_in, R.animator.flip_right_out,
@@ -42,7 +44,8 @@ public class GlobalFragmentManager {
 		.commit();
 	}
 	
-	public void displayNewTimer(){
+	public static void displayNewTimer(){
+		isShowingTimer = false;
 		manager.beginTransaction()
 		.replace(containerId, newTimerFragment)
 		.addToBackStack(null)
@@ -52,6 +55,13 @@ public class GlobalFragmentManager {
 	public static void displayDone(){
 		manager.beginTransaction()
 		.replace(containerId, doneFragment)
+		.commit();
+	}
+	
+	public static void displayTimer(){
+		isShowingTimer = true;
+		manager.beginTransaction()
+		.replace(containerId, timerFragment)
 		.commit();
 	}
 	

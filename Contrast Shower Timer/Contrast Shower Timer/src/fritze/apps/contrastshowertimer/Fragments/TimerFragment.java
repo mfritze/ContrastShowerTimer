@@ -8,10 +8,12 @@ import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 import fritze.apps.contrastshowertimer.R;
 import fritze.apps.contrastshowertimer.ShowerTimer;
 import fritze.apps.contrastshowertimer.Managers.GlobalFragmentManager;
@@ -21,8 +23,9 @@ import fritze.apps.contrastshowertimer.Managers.TypefaceManager;
 @SuppressLint("InflateParams")
 public class TimerFragment extends Fragment{
 	private View view;
-	private ShowerTimer sTimer;
 	private TextView timerText, timerTitle;
+	private ToggleButton pauseButton;
+	private ShowerTimer sTimer;
 	private int white, blue, red, green;
 	private boolean isPaused, isHot;
 	private CountDownTimer timer;
@@ -47,7 +50,6 @@ public class TimerFragment extends Fragment{
 		return view;
 	}
 
-	
 	@Override
 	public void onStart() {
 		super.onStart();
@@ -58,6 +60,9 @@ public class TimerFragment extends Fragment{
 		
 		timerTitle = (TextView) view.findViewById(R.id.textViewTimerTitle);
 		timerTitle.setTypeface(TypefaceManager.getTfBold(getActivity()));
+		
+		pauseButton = (ToggleButton) view.findViewById(R.id.toggleButtonPauseResume);
+		//pauseButton.setOnCheckedChangeListener(listener)
 	}
 
 	@Override
@@ -68,7 +73,6 @@ public class TimerFragment extends Fragment{
 		readyCountdown();
 	}
 
-	
 	private void setBackground(){
 		if(isHot){
 			timerLayout.setBackgroundColor(red);
@@ -77,7 +81,7 @@ public class TimerFragment extends Fragment{
 		}
 	}
 	
-	private void degrementCount() {
+	private void decrementCount() {
 		if(isHot){
 			
 		}else{
@@ -86,7 +90,12 @@ public class TimerFragment extends Fragment{
 	}
 
 	private void countdown(final int cyclesRemaining, final int duration){
-		timer = new CountDownTimer(duration, SECOND){
+		/* Due to a bug in the countdown class, if there is a slight 
+		 * error in time calculation, the last tick won't be displayed.
+		 * Therefore it's calculated every 500ms, but the display will only
+		 * update every second.
+		 */
+		timer = new CountDownTimer(duration, SECOND/2){
 
 			@Override
 			public void onTick(long millisUntilFinished) {
@@ -100,7 +109,7 @@ public class TimerFragment extends Fragment{
 				timerText.setText("");
 				Toast.makeText(getActivity(), "FINISED", Toast.LENGTH_SHORT).show();
 				setBackground();
-				degrementCount();
+				decrementCount();
 				isHot = !isHot;
 				if(cyclesRemaining > 0){
 					countdown(cyclesRemaining - 1, duration);
@@ -109,13 +118,14 @@ public class TimerFragment extends Fragment{
 				}
 			}
 			
-		}.start();
+		};
+		timer.start();
 	}
 	
 	private void readyCountdown(){
-		final int DURATION = 2000;
+		final int DURATION = 4000;
 		setTimerText(DURATION, green);
-		timer = new CountDownTimer(DURATION, SECOND){
+		timer = new CountDownTimer(DURATION, SECOND/2){
 
 			@Override
 			public void onTick(long millisUntilFinished) {
@@ -127,6 +137,9 @@ public class TimerFragment extends Fragment{
 			public void onFinish() {
 				// TODO play a sound/notification etc
 				timerTitle.setVisibility(View.GONE);
+				setTimerText(sTimer.getDuration(), white);
+				setBackground();
+				decrementCount();
 				countdown(sTimer.getCountdownCount(), sTimer.getDuration() * SECOND);
 			}
 			
@@ -150,4 +163,13 @@ public class TimerFragment extends Fragment{
 		this.sTimer = timer;
 	}
 	
+	private OnClickListener pauseButtonListener = new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			if(isPaused){
+				
+			}
+		}
+	};
 }
